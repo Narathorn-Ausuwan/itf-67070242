@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <a href="https://github.com/Narathorn-Ausuwan" >
+            <p id="header">
+                Narathorn Ausuwan's Phone Book
+            </p>
+        </a>
+    </div>
+
+    <div class="user">
+        <div class="top">
+            <div class="profile" id="picture">
+                <div class="notify">
+                    <p>1</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="appearance">
+            <div class="yourprofile">
+                Username
+            </div>
+
+            <div class="info">
+                <div class="current">
+                    <b id="info">Name : Narathorn Ausuwan</b>
+                    <b>Student ID : 67070242</b>
+                </div>
+                <div class="change">
+                    <label>Change Name</label><input type="text" id="inputname"><button onclick="getName()">Change</button>
+                    <label>Change Profile Picture</label><input type="text" id="profile"><button onclick="getProfile()">Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="export">
+
+        </div>
+        <div class="task">
+            <div class="taskheader">
+                Phone Number
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const name1 = document.getElementById("header") ;
+        const name2 = document.getElementById("info") ;
+        const name_input = document.getElementById("inputname") ;
+        const url = document.getElementById("profile")
+        const current_profile = document.getElementById("picture")
+
+        function getName() {
+            name1.textContent = name_input.value + "'s Phone Book" ;
+            name2.textContent = "Your Name : " + name_input.value ;
+            name_input.value = "" ;
+        }
+
+        function getProfile() {
+            current_profile.style.backgroundImage = "url(" + url.value + ")"
+            url.value = ""
+        }
+
+    </script>
+    
+</body>
+</html>
