@@ -5,10 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style2.css">
-    <title>Document</title>
+    <title>Narathorn Ausuwan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Trade+Winds&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <div class="header">
+        <a class="link_github" href="https://github.com/Narathorn-Ausuwan" target="_blank">
+            <b id="name">Narathorn Ausuwan 67070242</b>
+        </a>
+    </div>
+
+    <div class="user">
+        <div class="border_round">
+            <div class="profile" id="profile">
+                <div class="notification">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="setuser">
+        <div class="userbox">
+            <div>
+                <label>Set Username</label>
+                <input type="text" id="setusername" placeholder="ENTER USERNAME">
+                <button onclick="set_username()">Change</button>
+            </div>
+            <div>
+                <label>Set Profile</label>
+                <input type="text" id="setprofile" placeholder="ENTER IMAGE URL">
+                <button onclick="set_profile()">Change</button>
+            </div>
+            <div>
+                <label class="upload_button" for="upload">Upload From Device</label>
+                <input type="file" id="upload" accept="image/jpeg, image/png, image/jpg">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let username = document.getElementById("name")
+        let new_username = document.getElementById("setusername")
+        let profile = document.getElementById("profile")
+        let new_profile = document.getElementById("setprofile")
+        let upload = document.getElementById("upload")
+
+        // User Appearance
+
+        function set_username() {
+            username.textContent = new_username.value;
+            new_username.value = ""
+        }
+
+        function set_profile() {
+            profile.style.backgroundImage = "url(" + new_profile.value + ")";
+            new_profile.value = ""
+        }
+
+        upload.onchange = function() {
+            profile.style.backgroundImage = "url(" + URL.createObjectURL(upload.files[0]) + ")";
+        }
+
+        // Add Phone Number
+
+    </script>
+
 </body>
+
 </html>
