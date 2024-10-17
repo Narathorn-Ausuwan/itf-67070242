@@ -4,10 +4,6 @@
     font-weight: 400;
 }
 
-div {
-    border: 1px solid orange;
-}
-
 .header {
     height: 50px;
     background-color: #433878;
@@ -112,6 +108,66 @@ div {
 }
 
 .upload_button:hover {
+    background-color: #433878;
+    color: #f1d7f7;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    
+}
+
+.add_lst {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+}
+
+.add_title {
+    text-align: center;
+    background-color: #433878;
+    color: #f1d7f7;
+    margin-top: 30px ;
+}
+
+.add-lst-sort {
+    display: flex;
+    padding: 20px;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+th, td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+button {
+    color: #433878;
+    border: 55px;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #433878;
+    color: #f1d7f7;
+}
+
+.creater {   
+    background-color:#433878;
+    color: #f1d7f7;
+    text-align: center;
+}
+
+tr {
+    background-color: aliceblue;
+}
+
+th {
     background-color: #433878;
     color: #f1d7f7;
 }

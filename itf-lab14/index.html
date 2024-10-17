@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Narathorn Ausuwan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Trade+Winds&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="header">
+        <a class="link_github" href="https://github.com/Narathorn-Ausuwan" target="_blank">
+            <b id="name">Narathorn Ausuwan 67070242</b>
+        </a>
+    </div>
+
+    <div class="user">
+        <div class="border_round">
+            <div class="profile" id="profile">
+                <div class="notification" id="noti">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="setuser">
+        <div class="userbox">
+            <div>
+                <label>Set Username</label>
+                <input type="text" id="setusername" placeholder="ENTER USERNAME">
+                <button onclick="set_username()">Change</button>
+            </div>
+            <div>
+                <label>Set Profile</label>
+                <input type="text" id="setprofile" placeholder="ENTER IMAGE URL">
+                <button onclick="set_profile()">Change</button>
+            </div>
+            <div>
+                <label class="upload_button" for="upload">Upload From Device</label>
+                <input type="file" id="upload" accept="image/jpeg, image/png, image/jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="add_title">
+        <h2>Phone Number List</h2>
+    </div>
+
+    <div class="add_lst">
+        <div class="add-lst-sort">
+            <input type="text" id="cell1" placeholder="Name">
+            <input type="text" id="cell2" placeholder="Phone number">
+            <button onclick="addRow()">add</button>
+            <button onclick="saveCSV()">export</button>
+        </div>
+    </div>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>name</th>
+                <th>phone</th>
+            </tr>
+        </thead>
+    </table>
+
+    <footer>
+        <div class="creater">
+            <p>made by 67070242 Narathorn Ausuwan</p>
+        </div>
+    </footer>
+
+    <script>
+        const username = document.getElementById("name");
+        const new_username = document.getElementById("setusername");
+        const profile = document.getElementById("profile");
+        const new_profile = document.getElementById("setprofile");
+        const upload = document.getElementById("upload");
+        const table = document.getElementById("table");
+        let count = 0;
+        var phonenumber = [];
+
+        function set_username() {
+            username.textContent = new_username.value;
+            new_username.value = ""
+        };
+        
+        function set_profile() {
+            profile.style.backgroundImage = "url(" + new_profile.value + ")";
+            new_profile.value = ""
+        };
+        
+        upload.onchange = function() {
+            profile.style.backgroundImage = "url(" + URL.createObjectURL(upload.files[0]) + ")";
+        };
+
+        function addRow() {
+            count += 1;
+            const noti = document.getElementById("noti");
+            const row = document.createElement("tr");
+            const cellNo = document.createElement("td");
+            const cellName = document.createElement("td");
+            const cellTel = document.createElement("td");
+
+            noti.textContent = count;
+            cellNo.textContent = count;
+            cellName.textContent = document.getElementById("cell1").value;
+            cellTel.textContent = document.getElementById("cell2").value;
+            row.appendChild(cellNo);
+            row.appendChild(cellName);
+            row.appendChild(cellTel);
+            table.appendChild(row);
+
+            let arr = [];
+            arr.push(count);
+            arr.push(document.getElementById("cell1").value);
+            arr.push(document.getElementById("cell2").value);
+            phonenumber.push(arr);
+            console.log(phonenumber);
+            
+            document.getElementById("cell1").value = "";
+            document.getElementById("cell2").value = "";
+        };
+
+
+        function saveCSV() {
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "data.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+           document.body.removeChild(link);
+        };
+
+    </script>
+</body>
+
+
+</html>
